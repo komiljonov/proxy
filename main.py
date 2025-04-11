@@ -21,8 +21,7 @@ async def proxy(path: str, request: Request):
 
         # Prepare headers
         headers = dict(request.headers)
-        headers.pop("host", None)
-        headers.pop("content-length", None)
+        token = headers.get('Token')
 
         # Read body
         body = await request.body()
@@ -31,7 +30,9 @@ async def proxy(path: str, request: Request):
         proxied_response = await client.request(
             method=request.method,
             url=url,
-            headers=headers,
+            headers={
+                "Token": token
+            },
             content=body,
             timeout=30.0,
         )
