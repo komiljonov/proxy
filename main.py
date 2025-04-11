@@ -22,6 +22,7 @@ async def proxy(path: str, request: Request):
         # Prepare headers
         headers = dict(request.headers)
         token = headers.get('Token')
+        print(token)
 
         # Read body
         body = await request.body()
