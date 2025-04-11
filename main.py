@@ -32,6 +32,7 @@ async def proxy(path: str, request: Request):
 
         # Extract and log Token header
         headers = dict(request.headers)
+        logger.info(headers)
         token = headers.get("Token")
         logger.info(f"Proxying request to: {url}")
         logger.info(f"Using Token: {token}")
