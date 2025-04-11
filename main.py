@@ -36,5 +36,7 @@ async def proxy(path: str, request: Request):
             content=body,
             timeout=30.0,
         )
-
-        return proxied_response.json()
+        try:
+            return proxied_response.json()
+        except Exception as e:
+            return proxied_response.text
