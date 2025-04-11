@@ -29,6 +29,8 @@ async def proxy(path: str, request: Request):
         url = f"{TARGET_DOMAIN.rstrip('/')}/{path}"
         if request.query_params:
             url += f"?{request.query_params}"
+            
+        logger.info(url)
 
         # Extract and log Token header
         headers = dict(request.headers)
